@@ -6,8 +6,9 @@ declare module pants {
     export function zip<T, U>(lhs: T[], rhs: U[]): [T, U][];
     /** Tap functional pipelines with `.map(logthru)`. */
     export function logthru<T>(val: T): T;
+    
 }
 
-declare module 'pants' {
+declare module 'pan.ts' {
     export = pants;
 }
