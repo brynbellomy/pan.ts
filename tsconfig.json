@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "build"
+    },
+    "files": [
+        "typings/tsd.d.ts"
+      , "typings/when/when.d.ts"
+      , "typings/node/node.d.ts"
+      , "typings/jasmine/jasmine.d.ts"
+      , "dist/pants.d.ts"
+      , "src/index.ts"
+      , "src/test.ts"
+    ]
+}
+
