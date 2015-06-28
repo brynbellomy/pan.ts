@@ -11,7 +11,7 @@
       , "typings/when/when.d.ts"
       , "typings/node/node.d.ts"
       , "typings/jasmine/jasmine.d.ts"
-      , "dist/pants.d.ts"
+
       , "src/index.ts"
       , "src/test.ts"
     ]
