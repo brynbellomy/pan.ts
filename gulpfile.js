@@ -23,7 +23,7 @@ var DIST_DIR  = 'dist'
 
 gulp.task('default', ['clean', 'build'])
 
-gulp.task('dist', ['build'], function () {
+gulp.task('build', ['build-ts'], function () {
     var js = gulp.src(['build/*.js', 'build/*.js.map'])
 
     var dtsHeader = "\ndeclare module " + MODULE_NAME_SAFE + " {\n"
@@ -42,8 +42,6 @@ gulp.task('dist', ['build'], function () {
     return merge(js, dts)
                  .pipe(gulp.dest(DIST_DIR))
 })
-
-gulp.task('build', ['build-ts'])
 
 gulp.task('build-ts', function () {
     var tsCompiler = $.typescript({

@@ -1,8 +1,13 @@
 
 
 /** Returns `true` if `val` is `null` or `undefined`. */
-export function nullish (val:any): boolean {
-    return val === null || val === undefined
+export function nullish (...vals:any[]): boolean {
+    for (const val of vals) {
+        if (val === null || val === undefined) {
+            return true
+        }
+    }
+    return false
 }
 
 export function intersperse <T> (thing: T) {

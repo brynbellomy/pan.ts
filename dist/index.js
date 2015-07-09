@@ -1,6 +1,16 @@
 /** Returns `true` if `val` is `null` or `undefined`. */
-function nullish(val) {
-    return val === null || val === undefined;
+function nullish() {
+    var vals = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        vals[_i - 0] = arguments[_i];
+    }
+    for (var _a = 0; _a < vals.length; _a++) {
+        var val = vals[_a];
+        if (val === null || val === undefined) {
+            return true;
+        }
+    }
+    return false;
 }
 exports.nullish = nullish;
 function intersperse(thing) {
