@@ -1,10 +1,12 @@
 {
   "name": "pan.ts",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Statically-typed metagarments",
   "main": "dist/index.js",
   "typescript": {
-    "definitions": [ "dist/pants.d.ts" ]
+    "definitions": [
+      "dist/pants.d.ts"
+    ]
   },
   "scripts": {
     "test": "gulp test"
