@@ -43,18 +43,18 @@ function logMethod(prefix, opts) {
     if (opts === void 0) { opts = {}; }
     return function (target, propertyKey, descriptor) {
         var originalFunc = descriptor.value;
-        descriptor.value = function () {
+        descriptor.value = _.wrap(originalFunc, function (originalFn) {
             var args = [];
-            for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i - 0] = arguments[_i];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args[_i - 1] = arguments[_i];
             }
-            var returnValue = originalFunc.apply(this, args);
-            var message = [prefix, propertyKey, '(', (opts.args == true ? args : null), ')', '=>']
+            var returnValue = originalFn.apply(void 0, args);
+            var message = [prefix, propertyKey, '(', (opts.args === true ? args : null), ')', '=>']
                 .filter(function (part) { return !index_1.nullish(part); }) // prefix or args might be null
                 .join(' ');
             console.log(message, returnValue);
             return returnValue;
-        };
+        });
         return descriptor;
     };
 }
@@ -83,7 +83,7 @@ function logAfterMethod(prefix, closure) {
 exports.logAfterMethod = logAfterMethod;
 var utils;
 (function (utils) {
-    // a utility function to generate instances of a class
+    /** Utility function that generates instances of a class. */
     function construct(constructor, args) {
         var c = function () {
             return constructor.apply(this, args);

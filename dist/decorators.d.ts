@@ -25,6 +25,7 @@ declare module pants {
         new (...args: any[]): C;
     }
     export module utils {
+        /** Utility function that generates instances of a class. */
         function construct(constructor: any, args: any[]): any;
         /**
             Simplifies the creation of class decorators for the most common use case.  Example:

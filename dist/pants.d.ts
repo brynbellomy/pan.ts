@@ -35,6 +35,7 @@ declare module 'pan.ts/decorators' {
 	    new (...args: any[]): C;
 	}
 	export module utils {
+	    /** Utility function that generates instances of a class. */
 	    function construct(constructor: any, args: any[]): any;
 	    /**
 	        Simplifies the creation of class decorators for the most common use case.  Example:
@@ -66,7 +67,7 @@ declare module 'pan.ts/decorators' {
 	export var debugPrintable: (target: any) => any;
 
 }
-declare module 'pan.ts' {
+declare module 'pan.ts/index' {
 	export * from 'pan.ts/misc';
 	export import decorators = require('pan.ts/decorators');
 
