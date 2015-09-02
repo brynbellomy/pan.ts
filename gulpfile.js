@@ -15,6 +15,7 @@ var gulp = require('gulp')
   , del  = require('del')
   , glob = require('glob')
   , merge = require('merge-stream')
+  , dtsgen = require('dts-generator')
 
 var MODULE_NAME = 'pan.ts'
 var MODULE_NAME_SAFE = 'pants'
@@ -23,7 +24,7 @@ var DIST_DIR  = 'dist'
 
 gulp.task('default', ['clean', 'build'])
 
-gulp.task('build', ['build-ts'], function () {
+gulp.task('build', ['build-ts', 'build-dts'], function () {
     var js = gulp.src(['build/*.js', 'build/*.js.map'])
 
     var dtsHeader = "\ndeclare module " + MODULE_NAME_SAFE + " {\n"
@@ -33,20 +34,29 @@ gulp.task('build', ['build-ts'], function () {
                   + "    export = " + MODULE_NAME_SAFE + ";\n"
                   + "}\n"
 
-    var dts = gulp.src('build/index.d.ts')
+    var dts = gulp.src('build/*.d.ts')
                  .pipe($.replace('export declare', 'export'))
                  .pipe($.indent({ tabs: false, amount: 4, }))
                  .pipe($.insert.wrap(dtsHeader, dtsFooter))
-                 .pipe($.rename(MODULE_NAME_SAFE + '.d.ts'))
+                 // .pipe($.rename(MODULE_NAME_SAFE + '.d.ts'))
 
     return merge(js, dts)
                  .pipe(gulp.dest(DIST_DIR))
 })
 
+gulp.task('build-dts', function () {
+    require('dts-generator').generate({
+        name: 'pan.ts',
+        baseDir: 'src',
+        files: tsconfig().files.map(function (f) { return f.replace('src/', '') }),
+        out: 'dist/pants.d.ts'
+    });
+})
+
 gulp.task('build-ts', function () {
     var tsCompiler = $.typescript({
         outDir: 'build',
-        typescript: require('typescript'),
+        typescript: require('ntypescript'),
         removeComments: false,
         target: 'ES5',
         module: 'commonjs',
