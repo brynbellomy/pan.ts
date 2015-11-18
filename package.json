@@ -1,16 +1,9 @@
 {
-  "name": "pan.ts",
+  "name": "pants",
   "version": "1.1.0",
   "description": "Statically-typed metagarments",
-  "main": "dist/index.js",
-  "typescript": {
-    "definitions": [
-      "dist/pants.d.ts"
-    ]
-  },
-  "scripts": {
-    "test": "gulp test"
-  },
+  "main": "js/index.js",
+  "typings": "js/index",
   "authors": [
     "bryn austin bellomy <bryn.bellomy@gmail.com>"
   ],
@@ -20,29 +13,10 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "del": "^1.2.0",
-    "dts-generator": "^1.5.0",
-    "glob": "^5.0.10",
-    "gulp": "^3.8.11",
-    "gulp-concat": "^2.6.0",
-    "gulp-indent": "^1.0.0",
-    "gulp-insert": "^0.4.0",
-    "gulp-jasmine": "^2.0.1",
-    "gulp-load-plugins": "^0.10.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.3",
-    "gulp-typescript": "^2.7.7",
-    "jasmine": "^2.3.1",
-    "jasmine-reporters": "^2.0.6",
-    "lodash": "^3.9.3",
-    "merge-stream": "^0.1.7",
-    "ts-link-defs": "^1.0.3",
     "tsd": "^0.6.1",
-    "typescript": "^1.5.0-beta",
-    "vinyl-source-stream": "^1.1.0"
+    "typescript": "^1.8.0-dev.20151118"
   },
   "dependencies": {
-    "lodash": "^3.10.0",
-    "when": "^3.7.3"
+    "lodash": "^3.10.0"
   }
 }

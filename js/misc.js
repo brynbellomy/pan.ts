@@ -5,8 +5,8 @@ function nullish() {
     for (var _i = 0; _i < arguments.length; _i++) {
         vals[_i - 0] = arguments[_i];
     }
-    for (var _a = 0; _a < vals.length; _a++) {
-        var val = vals[_a];
+    for (var _a = 0, vals_1 = vals; _a < vals_1.length; _a++) {
+        var val = vals_1[_a];
         if (val === null || val === undefined) {
             return true;
         }
@@ -47,3 +47,4 @@ function formatDict(dict) {
     return "{\n" + formattedDict + "\n}";
 }
 exports.formatDict = formatDict;
+//# sourceMappingURL=misc.js.map
