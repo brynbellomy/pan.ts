@@ -20,6 +20,10 @@ function nonemptyString(str) {
         && str.trim().length > 0;
 }
 exports.nonemptyString = nonemptyString;
+function isEmptyObject(x) {
+    return _.isEmpty(x) && _.isObject(x);
+}
+exports.isEmptyObject = isEmptyObject;
 function intersperse(thing) {
     return function (into, each) {
         return into.concat(each, thing);
@@ -41,10 +45,33 @@ function logthru(val) {
 exports.logthru = logthru;
 function formatDict(dict) {
     var formattedDict = _.pairs(dict)
-        .map(function (pair) { return (pair[0] + ": " + pair[1]); })
-        .map(function (line) { return ""; })
+        .map(function (p) { return p[0] + ':' + p[1]; })
+        .map(function (line) { return ''; })
         .join('\n');
-    return "{\n" + formattedDict + "\n}";
+    return '{\n' + formattedDict + '\n}';
 }
 exports.formatDict = formatDict;
+function ensureInt(thing, fallback) {
+    if (fallback === void 0) { fallback = 0; }
+    if (typeof thing === 'string') {
+        var i = parseInt(thing, 10);
+        if (isNaN(i)) {
+            return fallback;
+        }
+        else {
+            return i;
+        }
+    }
+    else if (typeof thing === 'number') {
+        return thing;
+    }
+    else {
+        return fallback;
+    }
+}
+exports.ensureInt = ensureInt;
+function ensureBool(thing) {
+    return !(thing === 0 || thing === '0' || thing === null || thing === undefined);
+}
+exports.ensureBool = ensureBool;
 //# sourceMappingURL=misc.js.map

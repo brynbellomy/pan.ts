@@ -43,9 +43,29 @@ export function logthru <T> (val: T): T {
 
 export function formatDict (dict: any) {
     const formattedDict = _.pairs(dict)
-                           .map(pair => `${pair[0]}: ${pair[1]}`)
-                           .map(line => ``)
+                           .map(p => p[0] + ':' + p[1])
+                           .map(line => '')
                            .join('\n')
 
-    return `{\n${formattedDict}\n}`
+    return '{\n' + formattedDict + '\n}'
 }
+
+export function ensureInt (thing: string|number, fallback = 0) {
+    if (typeof thing === 'string') {
+        const i = parseInt(thing, 10)
+        if (isNaN(i)) {
+            return fallback
+        } else {
+            return i
+        }
+    } else if (typeof thing === 'number') {
+        return thing
+    } else {
+        return fallback
+    }
+}
+
+export function ensureBool (thing) {
+  return !(thing === 0 || thing === '0' || thing === null || thing === undefined)
+}
+
