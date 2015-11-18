@@ -18,6 +18,10 @@ export function nonemptyString (str:string): boolean {
             && str.trim().length > 0
 }
 
+export function isEmptyObject(x) {
+    return _.isEmpty(x) && _.isObject(x)
+}
+
 export function intersperse <T> (thing: T) {
     return function (into, each): T[] {
         return into.concat(each, thing)
