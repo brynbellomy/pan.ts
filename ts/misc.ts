@@ -69,3 +69,16 @@ export function ensureBool (thing) {
   return !(thing === 0 || thing === '0' || thing === null || thing === undefined)
 }
 
+/**
+    Bounds `n` to within (min, max), inclusive.
+ */
+export function bound (n: number, min: number, max: number) {
+    if (n < min) {
+        return min
+    } else if (n > max) {
+        return max
+    } else {
+        return n
+    }
+}
+

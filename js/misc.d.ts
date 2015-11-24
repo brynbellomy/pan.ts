@@ -9,3 +9,7 @@ export declare function logthru<T>(val: T): T;
 export declare function formatDict(dict: any): string;
 export declare function ensureInt(thing: string | number, fallback?: number): number;
 export declare function ensureBool(thing: any): boolean;
+/**
+    Bounds `n` to within (min, max), inclusive.
+ */
+export declare function bound(n: number, min: number, max: number): number;

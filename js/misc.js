@@ -74,4 +74,19 @@ function ensureBool(thing) {
     return !(thing === 0 || thing === '0' || thing === null || thing === undefined);
 }
 exports.ensureBool = ensureBool;
+/**
+    Bounds `n` to within (min, max), inclusive.
+ */
+function bound(n, min, max) {
+    if (n < min) {
+        return min;
+    }
+    else if (n > max) {
+        return max;
+    }
+    else {
+        return n;
+    }
+}
+exports.bound = bound;
 //# sourceMappingURL=misc.js.map

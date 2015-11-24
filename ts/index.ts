@@ -1,6 +1,9 @@
 
 
 import * as decorators from './decorators'
+import { bound, ensureBool, ensureInt, formatDict, intersperse, isEmptyObject, logthru, nonemptyString, nullish, zip } from './misc'
 
-export * from './misc'
-export { decorators }
+export {
+    decorators,
+    bound, ensureBool, ensureInt, formatDict, intersperse, isEmptyObject, logthru, nonemptyString, nullish, zip
+}
