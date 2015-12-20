@@ -2,6 +2,14 @@
 
 import * as _ from 'lodash'
 
+
+/**
+    Prevents stack overflows.
+ */
+export function async (fn: Function): void {
+    setTimeout(fn, 0)
+}
+
 /** Returns `true` if `val` is `null` or `undefined`. */
 export function nullish (...vals:any[]): boolean {
     for (const val of vals) {
@@ -50,6 +58,11 @@ export function formatDict (dict: any) {
     return '{\n' + formattedDict + '\n}'
 }
 
+/**
+    Takes a `string` or a `number`, and returns a number (by parsing the string if necessary).  Good for converting query string
+    parameters and other things that the browser always gives you as a string.  If this function is given a string it can't
+    parse, it returns the value of the argument `fallback` (0 by default).  `ensureInt()` never throws exceptions.
+ */
 export function ensureInt (thing: string|number, fallback = 0) {
     if (typeof thing === 'string') {
         const i = parseInt(thing, 10)
@@ -80,5 +93,35 @@ export function bound (n: number, min: number, max: number) {
     } else {
         return n
     }
+}
+
+
+export function defaults(orig: Object, defaults: Object) {
+    for (const k of Object.keys(defaults)) {
+        if (orig[k] === undefined) {
+            orig[k] = defaults[k]
+        }
+    }
+    return orig
+}
+
+/**
+    Intended to be passed as the fourth argument of `_.assign(...)`.
+ */
+export function assignAvailableProperties(value, other) {
+    if (_.isObject(value) && _.isObject(other)) {
+        return _.assign({}, value, other, assignAvailableProperties)
+    } else {
+        return _.isUndefined(other) ? value : other
+    }
+}
+
+
+
+/**
+    Returns `true` if `arr` contains `elem`, otherwise `false`.
+ */
+export function contains <T> (arr: T[], elem: T) {
+    return arr.indexOf(elem) >= 0
 }
 
