@@ -1,6 +1,6 @@
 {
   "name": "pants",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Statically-typed metagarments",
   "main": "js/index.js",
   "typings": "js/index",
