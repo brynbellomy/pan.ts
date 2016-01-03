@@ -112,10 +112,14 @@ function defaults(orig, defaults) {
 }
 exports.defaults = defaults;
 /**
-    Intended to be passed as the fourth argument of `_.assign(...)`.
+    Intended to be passed as the fourth argument of `_.assign(...)`.  Causes any object properties
+    to be recursively merged rather than overwriting one another.
  */
 function assignAvailableProperties(value, other) {
-    if (_.isObject(value) && _.isObject(other)) {
+    if (_.isArray(value)) {
+        return _.isUndefined(other) ? value : other;
+    }
+    else if (_.isObject(value) && _.isObject(other)) {
         return _.assign({}, value, other, assignAvailableProperties);
     }
     else {

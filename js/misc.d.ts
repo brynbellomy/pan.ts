@@ -24,7 +24,8 @@ export declare function ensureBool(thing: any): boolean;
 export declare function bound(n: number, min: number, max: number): number;
 export declare function defaults(orig: Object, defaults: Object): Object;
 /**
-    Intended to be passed as the fourth argument of `_.assign(...)`.
+    Intended to be passed as the fourth argument of `_.assign(...)`.  Causes any object properties
+    to be recursively merged rather than overwriting one another.
  */
 export declare function assignAvailableProperties(value: any, other: any): any;
 /**
