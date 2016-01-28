@@ -17,6 +17,6 @@
     "typescript": "^1.8.0-dev.20151118"
   },
   "dependencies": {
-    "lodash": "^3.10.0"
+    "lodash": "^4.0.1"
   }
 }
