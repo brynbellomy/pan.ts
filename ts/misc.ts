@@ -50,7 +50,7 @@ export function logthru <T> (val: T): T {
 }
 
 export function formatDict (dict: any) {
-    const formattedDict = _.pairs(dict)
+    const formattedDict = _.toPairs(dict)
                            .map(p => p[0] + ':' + p[1])
                            .map(line => '')
                            .join('\n')
@@ -104,21 +104,6 @@ export function defaults(orig: Object, defaults: Object) {
     }
     return orig
 }
-
-/**
-    Intended to be passed as the fourth argument of `_.assign(...)`.  Causes any object properties
-    to be recursively merged rather than overwriting one another.
- */
-export function assignAvailableProperties(value, other) {
-    if (_.isArray(value)) {
-        return _.isUndefined(other) ? value : other
-    } else if (_.isObject(value) && _.isObject(other)) {
-        return _.assign({}, value, other, assignAvailableProperties)
-    } else {
-        return _.isUndefined(other) ? value : other
-    }
-}
-
 
 
 /**

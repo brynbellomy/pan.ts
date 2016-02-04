@@ -1,7 +1,6 @@
 var decorators = require('./decorators');
 exports.decorators = decorators;
 var misc_1 = require('./misc');
-exports.assignAvailableProperties = misc_1.assignAvailableProperties;
 exports.async = misc_1.async;
 exports.contains = misc_1.contains;
 exports.defaults = misc_1.defaults;

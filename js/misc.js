@@ -51,7 +51,7 @@ function logthru(val) {
 }
 exports.logthru = logthru;
 function formatDict(dict) {
-    var formattedDict = _.pairs(dict)
+    var formattedDict = _.toPairs(dict)
         .map(function (p) { return p[0] + ':' + p[1]; })
         .map(function (line) { return ''; })
         .join('\n');
@@ -111,22 +111,6 @@ function defaults(orig, defaults) {
     return orig;
 }
 exports.defaults = defaults;
-/**
-    Intended to be passed as the fourth argument of `_.assign(...)`.  Causes any object properties
-    to be recursively merged rather than overwriting one another.
- */
-function assignAvailableProperties(value, other) {
-    if (_.isArray(value)) {
-        return _.isUndefined(other) ? value : other;
-    }
-    else if (_.isObject(value) && _.isObject(other)) {
-        return _.assign({}, value, other, assignAvailableProperties);
-    }
-    else {
-        return _.isUndefined(other) ? value : other;
-    }
-}
-exports.assignAvailableProperties = assignAvailableProperties;
 /**
     Returns `true` if `arr` contains `elem`, otherwise `false`.
  */
